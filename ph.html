@@ -1,0 +1,70 @@
+<html>
+<body>
+Phone no:<input type="text" id="ph" name="pno" placeholder="Enter ur mobile no" maxlength="10"><br>
+<input type="button" id="b11" name="b12" value="Generate an OTP" onclick="p()"><br>
+OTP:<input type="text" id="ot" name="tp" disabled><br>
+<input type="button" id="b111" name="b122" value="verify" onclick="pp()"><br>
+<script>
+
+var co=0;
+var coo=0;
+var ra;
+function p()
+{
+	var p1=document.getElementById("ph").value;
+	if(isNaN(p1)==false && p1.length==10)
+	
+		{
+			if(coo<3)
+			
+			{
+				ra=Math.floor(Math.random()*10000+1000);
+				alert("An OTP Will be send to "+p1.substring(0,2)+"******"+p1.substring(8,10));
+				alert("The OTP is "+ra);
+				document.getElementById("ot").disabled=false;
+				document.getElementById("b111").disabled=false;
+				coo=coo+1;
+			}
+			else
+			{
+				alert("please visit the branch");
+				document.getElementById("ot").disabled=true;
+				document.getElementById("b11").disabled=true;
+				document.getElementById("b111").disabled=true;
+			}
+		}
+	else
+	{
+		alert("sorry u enter invalid number");
+	}
+	
+}
+function pp()
+{
+
+	var p2=document.getElementById("ot").value;
+	var p4=document.getElementById("b111").value;
+	var p3=document.getElementById("ph").value;
+	if(co<3)
+	{
+		if(p2==ra)
+		{
+			alert("The mobile number"+p3+"is registered");
+		}
+		else{
+				alert("please enter the corrct OTP");
+				co=co+1;
+			}
+	}
+	if(co==3)
+	{
+		document.getElementById("ot").disabled=true;
+		document.getElementById("b111").disabled=true;
+		alert("please generate the OTP one more time");
+		co=0;
+	}
+
+}
+</script>
+</body>
+</html>
